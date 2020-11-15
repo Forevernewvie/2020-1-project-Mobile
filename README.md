@@ -4,7 +4,7 @@
 언어 <br>-Python<br>-Java<br>
 
 사용된 API <br>
--RetroFit2 
+-RetroFit2 <br>
 -Flask <br>
 -Keras <br>
 -tensorflow
