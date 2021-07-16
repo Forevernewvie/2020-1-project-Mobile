@@ -17,5 +17,5 @@
 
 [시연 동영상]<br>
   
-  [!title[Video Label](https://user-images.githubusercontent.com/53516129/125925473-165a5762-4c1a-40d0-bcb5-f2cedece4831.jpg){: width="50%" height="50%"}](https://youtu.be/d-k4kJUy808)<br>
+  [![Video Label](https://user-images.githubusercontent.com/53516129/125925473-165a5762-4c1a-40d0-bcb5-f2cedece4831.jpg)](https://youtu.be/d-k4kJUy808)<br>
   https://www.youtube.com/watch?v=kMPb4-hzkaI
