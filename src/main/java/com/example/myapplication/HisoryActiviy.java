@@ -92,13 +92,10 @@ public class HisoryActiviy extends AppCompatActivity {
     }
 
     private void SendAddr(String msg){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.221.100:5000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-       addressUpload addr = retrofit.create(addressUpload.class);
-       Call<ResponseBody> call = addr.sendMsg(msg);
+        addressUpload service = ServiceGenerator.createService(addressUpload.class);
+
+       Call<ResponseBody> call = service.sendMsg(msg);
        call.enqueue(new Callback<ResponseBody>() {
            @Override
            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -119,15 +116,8 @@ public class HisoryActiviy extends AppCompatActivity {
 
     private void testConnect() {
 
-        //imageUpload service =  ServiceGenerator.createService(imageUpload.class);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.221.100:5000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        recommen RecApi = retrofit.create(recommen.class);
-
-        Call<resList> call2 = RecApi.getList();
+        recommen service =  ServiceGenerator.createService(recommen.class);
+        Call<resList> call2 = service.getList();
         call2.enqueue(new Callback<resList>() {
             @Override
             public void onResponse(Call<resList> call, Response<resList> response) {
@@ -165,7 +155,6 @@ public class HisoryActiviy extends AppCompatActivity {
 
             boolean check_result = true;
 
-
             // 모든 퍼미션을 허용했는지 체크합니다.
 
             for (int result : grandResults) {
@@ -174,7 +163,6 @@ public class HisoryActiviy extends AppCompatActivity {
                     break;
                 }
             }
-
 
             if ( check_result ) {
 
@@ -210,17 +198,13 @@ public class HisoryActiviy extends AppCompatActivity {
         int hasCoarseLocationPermission = ContextCompat.checkSelfPermission(HisoryActiviy.this,
                 Manifest.permission.ACCESS_COARSE_LOCATION);
 
-
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
                 hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
 
             // 2. 이미 퍼미션을 가지고 있다면
             // ( 안드로이드 6.0 이하 버전은 런타임 퍼미션이 필요없기 때문에 이미 허용된 걸로 인식합니다.)
 
-
             // 3.  위치 값을 가져올 수 있음
-
-
 
         } else {  //2. 퍼미션 요청을 허용한 적이 없다면 퍼미션 요청이 필요합니다. 2가지 경우(3-1, 4-1)가 있습니다.
 

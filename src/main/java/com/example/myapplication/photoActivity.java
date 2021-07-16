@@ -20,18 +20,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.TedPermission;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -40,8 +30,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class photoActivity extends AppCompatActivity {
     protected  String File_Path;
@@ -100,7 +89,6 @@ public class photoActivity extends AppCompatActivity {
         File imgFile = new File(file_path);
 
         imageUpload service =  ServiceGenerator.createService(imageUpload.class);
-
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/jpg"), imgFile);
         MultipartBody.Part body = MultipartBody.Part.createFormData("image", imgFile.getName(), requestFile);
 
@@ -129,16 +117,8 @@ public class photoActivity extends AppCompatActivity {
     private void testConnect()
     {
 
-        //imageUpload service =  ServiceGenerator.createService(imageUpload.class);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.221.100:5000/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-
-        JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
-
-        Call<Post> call = jsonPlaceHolderApi.getPost();
+        JsonPlaceHolderApi service =  ServiceGenerator.createService(JsonPlaceHolderApi.class);
+        Call<Post> call = service.getPost();
 
         call.enqueue(new Callback<Post>() {
             @Override
