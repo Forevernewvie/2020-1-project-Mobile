@@ -16,10 +16,7 @@ import android.widget.Toast;
 import android.widget.Button;
 
 public class PopupActivity extends Activity {
-
-
     TextView txtText;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

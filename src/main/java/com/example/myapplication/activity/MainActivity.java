@@ -134,11 +134,10 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        // Check which request we're responding to
         //앨범
         if (requestCode == 1) {
 
-            // Make sure the request was successful
+
             if (resultCode == RESULT_OK) {
                 try {
 
@@ -148,9 +147,6 @@ public class MainActivity extends AppCompatActivity {
                     InputStream in = getContentResolver().openInputStream(data.getData());
                     Bitmap img = BitmapFactory.decodeStream(in);
 
-                    //img = ExifUtils.rotateBitmap(File_path,img);
-                    //Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), fileRri);
-                    // 이미지 표시
 
                     float scale = (float) (1024/(float)img.getWidth());
                     int image_w = (int) (img.getWidth() * scale * 0.75);
@@ -181,9 +177,6 @@ public class MainActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                 //System.out.println("uri:"+photoUri);
-                // System.out.println("real_path:"+ima1geFilePath);
-                //Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
 
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
 

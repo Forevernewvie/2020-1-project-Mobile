@@ -10,11 +10,6 @@ import retrofit2.http.Part;
 
 public interface addressUpload {
     @POST("/address")
-
-
     Call<ResponseBody> sendMsg(
             @Body String addr);
-
-
-
 }

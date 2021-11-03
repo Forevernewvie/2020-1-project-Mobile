@@ -88,10 +88,10 @@ public class HisoryActiviy extends AppCompatActivity {
         double longitude = gpsTracker.getLongitude();
 
         address = getCurrentAddress(latitude, longitude);
-        SendAddr(address);
+        sendAddr(address);
     }
 
-    private void SendAddr(String msg){
+    private void sendAddr(String msg){
 
         addressUpload service = ServiceGenerator.createService(addressUpload.class);
 
@@ -317,7 +317,6 @@ public class HisoryActiviy extends AppCompatActivity {
 
     public boolean checkLocationServicesStatus() {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }

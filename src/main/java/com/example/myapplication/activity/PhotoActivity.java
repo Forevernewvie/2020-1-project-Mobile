@@ -82,9 +82,7 @@ public class photoActivity extends AppCompatActivity {
 
 
 
-    private void testUploadImage(String file_path)
-    {
-
+    private void testUploadImage(String file_path) {
 
         File imgFile = new File(file_path);
 
@@ -114,8 +112,7 @@ public class photoActivity extends AppCompatActivity {
 
     }
 
-    private void testConnect()
-    {
+    private void testConnect() {
 
         JsonPlaceHolderApi service =  ServiceGenerator.createService(JsonPlaceHolderApi.class);
         Call<Post> call = service.getPost();
@@ -135,7 +132,6 @@ public class photoActivity extends AppCompatActivity {
                 Intent intent = new Intent(photoActivity.this,HisoryActiviy.class);
                 intent.putExtra("result",content);
                 startActivity(intent);
-
 
             }
 
